@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class ProfileController extends Controller
+class ProfilesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,6 +25,6 @@ class ProfileController extends Controller
     public function index($user)
     {
     	$user = User::findOrFail($user);
-        return view('profile.index', ['user' => $user]);
+        return view('profiles.index', ['user' => $user]);
     }
 }

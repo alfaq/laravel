@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div>Position: {{ $user->profile->position }}</div>
+                    <div>About me: {{ $user->profile->about_me }}</div>
                 </div>
             </div>
         </div>

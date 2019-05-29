@@ -14,6 +14,11 @@
                         </div>
                     @endif
 
+                    <div>
+                        <a href="/post/create">Add new post</a>
+                    </div>
+
+                    <div>Name: {{$user->name}}</div>
                     <div>Position: {{ $user->profile->position }}</div>
                     <div>About me: {{ $user->profile->about_me }}</div>
                 </div>

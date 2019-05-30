@@ -26,7 +26,7 @@
                         @foreach($user->posts as $post)
                             <div class="row">
                                 <div class="col-12">
-                                    <div><h3>{{$post->title}}</h3></div>
+                                    <div><h3><a href="/post/{{$post->id}}">{{$post->title}}</a></h3></div>
                                     <div>{{$post->description}}</div>
                                     <div><img src="/storage/{{$post->image}}" style="width: 150px; height: 80px;"/></div>
                                 </div>

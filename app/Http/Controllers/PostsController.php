@@ -11,4 +11,17 @@ class PostsController extends Controller
 
 		return view('posts.create');
 	}
+
+	public function store(){
+
+		$data = request()->validate([
+			'title' => 'required',
+			'description' => 'required',
+		]);
+
+		//\App\Post::create($data);
+		auth()->user()->posts()->create($data);
+
+		dd(request()->all());
+	}
 }

@@ -21,6 +21,19 @@
                     <div>Name: {{$user->name}}</div>
                     <div>Position: {{ $user->profile->position }}</div>
                     <div>About me: {{ $user->profile->about_me }}</div>
+
+                    <div>
+                        @foreach($user->posts as $post)
+                            <div class="row">
+                                <div class="col-12">
+                                    <div><h3>{{$post->title}}</h3></div>
+                                    <div>{{$post->description}}</div>
+                                    <div><img src="/storage/{{$post->image}}" style="width: 150px; height: 80px;"/></div>
+                                </div>
+                            </div>
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

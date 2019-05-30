@@ -23,11 +23,20 @@ class PostsController extends Controller
 		$data = request()->validate([
 			'title' => 'required',
 			'description' => 'required',
+			'image' => ['required','image'],
 		]);
 
-		//\App\Post::create($data);
-		auth()->user()->posts()->create($data);
+		$imagePath = request('image')->store('uploads', 'public');
 
-		dd(request()->all());
+		//\App\Post::create($data);
+		auth()->user()->posts()->create([
+			'title' => $data['title'],
+			'description' => $data['description'],
+			'image' => $imagePath,
+		]);
+
+		//dd(request()->all());
+
+		return redirect('/profile/'.auth()->user()->id);
 	}
 }

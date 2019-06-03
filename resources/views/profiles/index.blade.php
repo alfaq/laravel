@@ -5,7 +5,11 @@
     <div class="row mb-3">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">Profile #{{$user->id}} (<a href="/profile/{{$user->id}}/edit">edit</a>)</div>
+                <div class="card-header">Profile #{{$user->id}}
+                    @can('update', $user->profile)
+                        (<a href="/profile/{{$user->id}}/edit">edit</a>)
+                    @endcan
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -31,7 +35,11 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">My posts (<a href="/post/create">add post</a>)</div>
+                <div class="card-header">Posts
+                    @can('update', $user->profile)
+                        (<a href="/post/create">add post</a>)
+                    @endif
+                </div>
 
                 <div class="card-body">
                     <div class="row">

@@ -14,7 +14,7 @@ class ProfilesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -29,10 +29,13 @@ class ProfilesController extends Controller
     }
 
 	public function edit(User $user){
+    	$this->authorize('update', $user->profile);
+
 		return view('profiles.edit', ['user' => $user]);
 	}
 
 	public function update(User $user){
+		$this->authorize('update', $user->profile);
 
 		$data = request()->validate([
 			'position' => '',

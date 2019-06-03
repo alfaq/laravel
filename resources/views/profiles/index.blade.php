@@ -19,6 +19,8 @@
                     @endif
 
                     <dl class="row">
+                        <dd class="col-sm-2"><img src="/storage/{{ $user->profile->image }}" /></dd>
+                        <dd class="col-sm-10"></dd>
                         <dt class="col-sm-2">Name:</dt>
                         <dd class="col-sm-10">{{$user->name}}</dd>
 

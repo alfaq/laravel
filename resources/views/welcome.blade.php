@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
 
         <!-- Styles -->
         <style>
@@ -78,7 +79,6 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     My Blog
@@ -95,5 +95,7 @@
                 </div>
             </div>
         </div>
+
+        <script defer src="/fontawesome/js/all.min.js"></script>
     </body>
 </html>

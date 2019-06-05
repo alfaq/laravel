@@ -24,6 +24,35 @@
                     <hr>
                 </div>
             </div>
+
+            <div class="card mt-4">
+                <div class="card-header">Add comment</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('comment') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description">{{ old('description') }}</textarea>
+
+                            @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+                            <input type="hidden" name="post_id" value="{{$post->id}}" />
+
+                            <button type="submit" class="mt-3 btn btn-primary">
+                                {{ __('Add comment') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
             @if( ! $post->comments->isEmpty() )
             <div class="card mt-4">
                 <div class="card-header">
@@ -33,8 +62,10 @@
                     <div class="mb-4">
                         @foreach($post->comments as $comment)
                             <div>
-                                <img class="rounded-circle mr-2" style="width: 50px; height: 50px;" src="/storage/{{ $comment->user->profile->image }}">
-                                {{ $comment->user->name }}
+                                <a href="/profile/{{ $comment->user->profile->id}}">
+                                    <img class="rounded-circle mr-2" style="width: 50px; height: 50px;" src="/storage/{{ $comment->user->profile->image }}">
+                                    {{ $comment->user->name }}
+                                </a>
                             </div>
                             <div class="mt-2 p-4 card">
                                 <a href="/post/{{$comment->post_id}}/#comment/{{ $comment->id }}" name="comment/{{ $comment->id }}" title="link on comment">#</a>

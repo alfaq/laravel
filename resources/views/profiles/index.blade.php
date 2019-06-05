@@ -77,7 +77,7 @@
                 <div class="card-body">
                     <div class="row">
                         @foreach($user->comments as $comment)
-                            <div class="pl-4">
+                            <div class="pl-4 w-100">
                                 <h5 class="card-title">{{ $comment->post->title }}</h5>
                                 <a href="/post/{{ $comment->post_id }}#comment/{{ $comment->id }}">{{ str_limit($comment->description, $limit = 100, $end = '...') }}</a>
                             </div>

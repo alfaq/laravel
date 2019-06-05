@@ -13,7 +13,7 @@ class Comment extends Model
 		return $this->belongsTo(User::class);//https://laravel.ru/docs/v5/eloquent-relationships
 	}
 
-	public function profile() {
-		return $this->belongsTo(Profile::class);//https://laravel.ru/docs/v5/eloquent-relationships
+	public function post() {
+		return $this->belongsTo(Post::class);//https://laravel.ru/docs/v5/eloquent-relationships
 	}
 }

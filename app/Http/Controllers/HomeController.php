@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Comment;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,7 @@ class HomeController extends Controller
 
 	    $users = User::orderBy('id', 'desc')->take(5)->get();
 
-	    $comments = [];
+	    $comments = Comment::orderBy('id', 'desc')->take(5)->get();
 
 	    $posts = Post::orderBy('id', 'desc')->take(10)->get();
 

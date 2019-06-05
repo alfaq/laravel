@@ -15,29 +15,31 @@
                     </ul>
                 </div>
 
+                @if( ! $users->isEmpty() )
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="far fa-address-card"></i> New users
                     </div>
-                    @if( ! $users->isEmpty() )
-                        <ul class="list-group list-group-flush">
-                        @foreach($users as $user)
-                                <li class="list-group-item"><a href="/profile/{{ $user->id }}">{{ $user->name }}</a></li>
-                        @endforeach
-                        </ul>
-                    @endif
+                    <ul class="list-group list-group-flush">
+                    @foreach($users as $user)
+                            <li class="list-group-item"><a href="/profile/{{ $user->id }}">{{ $user->name }}</a></li>
+                    @endforeach
+                    </ul>
                 </div>
+                @endif
 
+                @if( ! $comments->isEmpty() )
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="far fa-comments"></i> New comments
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        @foreach($comments as $comment)
+                            <li class="list-group-item"><a href="/post/{{ $comment->post_id }}#comment/{{ $comment->id }}">{{ str_limit($comment->description, $limit = 100, $end = '...') }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
+                @endif
             </div>
             <div class="col-8">
                 @if( ! $posts->isEmpty() )
@@ -56,7 +58,7 @@
                                         <a href="#" style="color: gray; font-size: 12px;"><i class="far fa-list-alt"></i> Category</a>
                                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-clock"></i> {{  $post->created_at->format('d M Y - H:i:s') }}</span>
                                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-eye"></i> 32 </span>
-                                        <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-comments"></i> 10 </span>
+                                        <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-comments"></i> {{count($post->comments)}} </span>
                                         <a href="/profile/{{$post->user->id}}" class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-user"></i> {{$post->user->name}}</a>
                                     </div>
                                     <div class="card-text">{{ $post->description }}</div>

@@ -19,4 +19,8 @@ class Post extends Model
 	public function comments(){
 		return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
 	}
+
+	public function category(){
+		return $this->belongsTo(Category::class);//https://laravel.ru/docs/v5/eloquent-relationships
+	}
 }

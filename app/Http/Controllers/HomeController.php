@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Comment;
+use App\Category;
 
 class HomeController extends Controller
 {
 	public function index(){
 
-    	//todo
-    	$categories = [];
+    	$categories = Category::orderBy('title', 'asc')->get();
 
 	    $users = User::orderBy('id', 'desc')->take(5)->get();
 

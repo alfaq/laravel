@@ -26,6 +26,26 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="category" id="category" class="form-control @error('category') is-invalid @enderror"  >
+                                    @if( ! $categories->isEmpty() )
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+
+                                @error('category')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">

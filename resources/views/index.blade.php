@@ -57,7 +57,7 @@
                                             background-position: 50%;'>
                                     </div>
                                     <div class="card-text mb-2">
-                                        <a href="#" style="color: gray; font-size: 12px;"><i class="far fa-list-alt"></i> Category</a>
+                                        <a href="/category/{{ $post->category->id }}" style="color: gray; font-size: 12px;"><i class="far fa-list-alt"></i> {{ $post->category->title }}</a>
                                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-clock"></i> {{  $post->created_at->format('d M Y - H:i:s') }}</span>
                                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-eye"></i> 32 </span>
                                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-comments"></i> {{count($post->comments)}} </span>

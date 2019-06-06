@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class PostsController extends Controller
 {
@@ -12,8 +13,9 @@ class PostsController extends Controller
 	}
 
 	public function create(){
+		$categories = Category::orderBy('title', 'asc')->get();
 
-		return view('posts.create');
+		return view('posts.create', compact('categories'));
 	}
 
 	public function store(){
@@ -21,6 +23,7 @@ class PostsController extends Controller
 		$data = request()->validate([
 			'title' => 'required',
 			'description' => 'required',
+			'category' => 'required',
 			'image' => ['required','image'],
 		]);
 
@@ -30,6 +33,7 @@ class PostsController extends Controller
 		auth()->user()->posts()->create([
 			'title' => $data['title'],
 			'description' => $data['description'],
+			'category_id' => $data['category'],
 			'image' => $imagePath,
 		]);
 

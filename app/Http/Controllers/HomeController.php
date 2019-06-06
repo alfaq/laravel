@@ -14,11 +14,11 @@ class HomeController extends Controller
 
     	$categories = Category::orderBy('title', 'asc')->get();
 
-	    $users = User::orderBy('id', 'desc')->take(5)->get();
+	    $users = User::orderBy('created_at', 'desc')->take(5)->get();
 
-	    $comments = Comment::orderBy('id', 'desc')->take(5)->get();
+	    $comments = Comment::orderBy('created_at', 'desc')->take(5)->get();
 
-	    $posts = Post::orderBy('id', 'desc')->take(10)->get();
+	    $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
     	return view('index', compact('categories', 'users', 'comments', 'posts'));
     }

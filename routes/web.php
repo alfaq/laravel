@@ -24,3 +24,5 @@ Route::get('/post/create', 'PostsController@create')->name('post.create');
 Route::get('/post/{post}', 'PostsController@show')->name('post.show');
 
 Route::post('/comment', 'CommentsController@store')->name('comment');
+
+Route::get('/category/{category}', 'CategoriesController@show')->name('category.show');

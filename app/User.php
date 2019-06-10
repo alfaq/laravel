@@ -59,4 +59,8 @@ class User extends Authenticatable
 	public function comments(){
 		return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
 	}
+
+	public function role(){
+		return $this->belongsTo(Role::class);//https://laravel.ru/docs/v5/eloquent-relationships
+	}
 }

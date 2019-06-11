@@ -29,13 +29,11 @@ Route::get('/category/{category}', 'CategoriesController@show')->name('category.
 
 
 //admin part
-Route::namespace('Admin')->prefix('dashboard')->group(function() {
+Route::middleware('is_admin')->namespace('Admin')->prefix('dashboard')->group(function() {
 	Route::get('/', 'AdminController@index')->name('dashboard.index');
 
 	Route::get('/users', 'UserController@index')->name('dashboard.users');
-	Route::get('/roles', function () {
-		return 'Hello World';
-	});
+	Route::get('/roles', 'RoleController@index')->name('dashboard.roles');
 	Route::get('/posts', function () {
 		return 'Hello World';
 	});

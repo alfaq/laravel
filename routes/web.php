@@ -32,9 +32,7 @@ Route::get('/category/{category}', 'CategoriesController@show')->name('category.
 Route::namespace('Admin')->prefix('dashboard')->group(function() {
 	Route::get('/', 'AdminController@index')->name('dashboard.index');
 
-	Route::get('/users', function () {
-		return 'Hello World';
-	});
+	Route::get('/users', 'UserController@index')->name('dashboard.users');
 	Route::get('/roles', function () {
 		return 'Hello World';
 	});

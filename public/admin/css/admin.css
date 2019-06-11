@@ -1,0 +1,14 @@
+body{
+    background: gray;
+}
+
+.admin-count-items {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.admin-count-items span {
+    display: block;
+    font-size: 30px;
+}

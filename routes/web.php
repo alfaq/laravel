@@ -26,3 +26,25 @@ Route::get('/post/{post}', 'PostsController@show')->name('post.show');
 Route::post('/comment', 'CommentsController@store')->name('comment');
 
 Route::get('/category/{category}', 'CategoriesController@show')->name('category.show');
+
+
+//admin part
+Route::namespace('Admin')->prefix('dashboard')->group(function() {
+	Route::get('/', 'AdminController@index')->name('dashboard.index');
+
+	Route::get('/users', function () {
+		return 'Hello World';
+	});
+	Route::get('/roles', function () {
+		return 'Hello World';
+	});
+	Route::get('/posts', function () {
+		return 'Hello World';
+	});
+	Route::get('/categories', function () {
+		return 'Hello World';
+	});
+	Route::get('/comments', function () {
+		return 'Hello World';
+	});
+});

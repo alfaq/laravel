@@ -12,6 +12,6 @@ class RoleController extends Controller
 
 	    $roles = Role::orderBy('id', 'desc')->paginate(10);
 
-	    return view('admin.roles.show', compact('roles'));
+	    return view('admin.roles.index', compact('roles'));
     }
 }

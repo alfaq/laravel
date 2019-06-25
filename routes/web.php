@@ -37,9 +37,14 @@ Route::middleware('is_admin')->namespace('Admin')->prefix('dashboard')->group(fu
 	Route::get('/posts', function () {
 		return 'Hello World';
 	});
-	Route::get('/categories', function () {
-		return 'Hello World';
-	});
+	//category
+	Route::get('/categories', 'CategoriesController@index')->name('dashboard.categories');
+	Route::get('/categories/create', 'CategoriesController@create')->name('dashboard.categories.create');
+	Route::post('/categories', 'CategoriesController@store')->name('dashboard.categories.post');
+	Route::get('/categories/{category}/edit', 'CategoriesController@edit')->name('dashboard.categories.edit');
+	Route::patch('/categories/{category}', 'CategoriesController@update')->name('dashboard.categories.update');
+	Route::delete('/categories/{category}', 'CategoriesController@destroy')->name('dashboard.categories.delete');
+
 	Route::get('/comments', function () {
 		return 'Hello World';
 	});

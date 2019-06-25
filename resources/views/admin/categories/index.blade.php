@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mb-4">
         <div class="card-header">
-            Categories
+            Categories  (<a href="/dashboard/categories/create">Add</a>)
         </div>
         <div class="card-body">
             <table class="table">
@@ -25,7 +25,7 @@
                         <td>{{$category->created_at}}</td>
                         <td><a href="/dashboard/categories/{{$category->id}}/edit">Edit</a></td>
                         <td>
-                            <form action="{{ url('/dashboard/categories', ['category' => $category->id]) }}" method="post">
+                            <form onclick="return confirm('Are you sure you want to delete this item?')" action="{{ url('/dashboard/categories', ['category' => $category->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-default" type="submit" value="Delete" />

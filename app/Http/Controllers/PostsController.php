@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -38,9 +39,10 @@ class PostsController extends Controller
 		return redirect('/profile/'.auth()->user()->id);
 	}
 
-	public function show(\App\Post $post){
+	public function show(Post $post){
 
 		//dd($post);
+		event('postHasViewed', $post);
 
 		return view('posts.show', ['post' => $post]);
 	}

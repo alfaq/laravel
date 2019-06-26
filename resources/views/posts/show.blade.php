@@ -16,7 +16,7 @@
                     <div class="card-text mb-2">
                         <a href="/category/{{ $post->category->id }}" style="color: gray; font-size: 12px;"><i class="far fa-list-alt"></i> {{ $post->category->title }}</a>
                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-clock"></i> {{  $post->created_at->format('d M Y - H:i:s') }}</span>
-                        <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-eye"></i> 32 </span>
+                        <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-eye"></i> {{ $post->view_count }}</span>
                         <span class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-comments"></i> {{count($post->comments)}} </span>
                         <a href="/profile/{{$post->user->id}}" class="ml-2" style="color: gray; font-size: 12px;"><i class="far fa-user"></i> {{$post->user->name}}</a>
                     </div>

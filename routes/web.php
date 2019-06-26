@@ -34,9 +34,13 @@ Route::middleware('is_admin')->namespace('Admin')->prefix('dashboard')->group(fu
 
 	Route::get('/users', 'UserController@index')->name('dashboard.users');
 	Route::get('/roles', 'RoleController@index')->name('dashboard.roles');
-	Route::get('/posts', function () {
-		return 'Hello World';
-	});
+	//posts
+	Route::get('/posts', 'PostsController@index')->name('dashboard.posts');
+	Route::get('/posts/create', 'PostsController@create')->name('dashboard.posts.create');
+	Route::post('/posts', 'PostsController@store')->name('dashboard.posts.post');
+	Route::get('/posts/{post}/edit', 'PostsController@edit')->name('dashboard.posts.edit');
+	Route::patch('/posts/{post}', 'PostsController@update')->name('dashboard.posts.update');
+	Route::delete('/posts/{post}', 'PostsController@destroy')->name('dashboard.posts.delete');
 	//category
 	Route::get('/categories', 'CategoriesController@index')->name('dashboard.categories');
 	Route::get('/categories/create', 'CategoriesController@create')->name('dashboard.categories.create');

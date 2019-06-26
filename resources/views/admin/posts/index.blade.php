@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mb-4">
         <div class="card-header">
-            Categories  (<a href="/dashboard/categories/create">Add</a>)
+            Posts  (<a href="/dashboard/posts/create">Add</a>)
         </div>
         <div class="card-body">
             <table class="table">
@@ -11,21 +11,25 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">User</th>
                     <th scope="col">Created</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if( ! $categories->isEmpty() )
-                    @foreach($categories as $category)
+                @if( ! $posts->isEmpty() )
+                    @foreach($posts as $post)
                     <tr>
-                        <th scope="row">{{$category->id}}</th>
-                        <td>{{$category->title}}</td>
-                        <td>{{$category->created_at}}</td>
-                        <td><a href="/dashboard/categories/{{$category->id}}/edit">Edit</a></td>
+                        <th scope="row">{{$post->id}}</th>
+                        <td><a target="_blank" href="/post/{{$post->id}}">{{$post->title}}</a></td>
+                        <td><a target="_blank" href="/dashboard/categories/{{$post->category->id}}/edit">{{$post->category->title}}</a></td>
+                        <td><a target="_blank" href="/dashboard/users/{{$post->user->id}}/edit">{{$post->user->name}}</a></td>
+                        <td>{{$post->created_at}}</td>
+                        <td><a href="/dashboard/posts/{{$post->id}}/edit">Edit</a></td>
                         <td>
-                            <form onclick="return confirm('Are you sure you want to delete this item?')" action="{{ url('/dashboard/categories', ['category' => $category->id]) }}" method="post">
+                            <form onclick="return confirm('Are you sure you want to delete this item?')" action="{{ url('/dashboard/posts', ['post' => $post->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-default" type="submit" value="Delete" />

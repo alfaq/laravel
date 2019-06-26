@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Post;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -21,7 +22,8 @@ class PostsController extends Controller
 
 	public function create(){
 		$categories = Category::orderBy('title', 'asc')->get();
-		return view('admin.posts.create', compact('categories'));
+		$users = User::orderBy('name', 'asc')->get();
+		return view('admin.posts.create', compact('categories', 'users'));
 	}
 
 	public function store(){
@@ -30,15 +32,17 @@ class PostsController extends Controller
 			'description' => 'required',
 			'category' => 'required',
 			'image' => ['required','image'],
+			'user' => 'required',
 		]);
 
 		$imagePath = request('image')->store('uploads', 'public');
 
 		//\App\Post::create($data);
-		auth()->user()->posts()->create([
+		Post::create([
 			'title' => $data['title'],
 			'description' => $data['description'],
 			'category_id' => $data['category'],
+			'user_id' => $data['user'],
 			'image' => $imagePath,
 		]);
 

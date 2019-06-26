@@ -45,6 +45,30 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="user" class="col-md-4 col-form-label text-md-right">{{ __('Author') }}</label>
+
+                    <div class="col-md-6">
+                        <select name="user" id="user" class="form-control @error('user') is-invalid @enderror"  >
+                            @if( ! $users->isEmpty() )
+                                @foreach($users as $user)
+                                    @if($user->id == 1)
+                                        <option selected value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @else
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </select>
+
+                        @error('user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                     <div class="col-md-6">

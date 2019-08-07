@@ -16,14 +16,14 @@ class HomeController extends Controller
 		//работа с файлами
 		//Storage::disk('local')->put('public/file.txt', 'Contents');
 		//http://laravel.su/docs/5.4/filesystem
-		Storage::put('public/file.txt', 'Contents');
+		/*Storage::put('public/file.txt', 'Contents');
 		if($exists = Storage::exists('public/file.txt')) {
 			$contents = Storage::get( 'public/file.txt' );
 			//dd( $contents );
 
 			$url = Storage::url('public/file.txt');
 			dd( $url );
-		}
+		}*/
 
     	return view('index', compact('posts'));
     }

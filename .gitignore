@@ -2,10 +2,12 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/debugbar
 /vendor
 .env
 .idea
 .phpunit.result.cache
+.phpstorm.meta.php
 Homestead.json
 Homestead.yaml
 npm-debug.log

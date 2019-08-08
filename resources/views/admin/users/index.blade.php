@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mb-4">
         <div class="card-header">
-            Users
+            Users (<a href="/dashboard/users/create">Add</a>)
         </div>
         <div class="card-body">
             <table class="table">
@@ -27,8 +27,8 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->role->title}}</td>
                         <td>{{$user->created_at}}</td>
-                        <td><a href="/dashboard/profile/{{$user->id}}/edit">Edit</a></td>
-                        <td><a href="/dashboard/profile/{{$user->id}}">Delete</a></td>
+                        <td><a href="/dashboard/users/{{$user->id}}/edit">Edit</a></td>
+                        <td><a href="/dashboard/users/{{$user->id}}">Delete</a></td>
                     </tr>
                     @endforeach
                 @endif

@@ -32,7 +32,9 @@ Route::get('/category/{category}', 'CategoriesController@show')->name('category.
 Route::middleware('is_admin')->namespace('Admin')->prefix('dashboard')->group(function() {
 	Route::get('/', 'AdminController@index')->name('dashboard.index');
 
-	Route::get('/users', 'UserController@index')->name('dashboard.users');
+	//Route::get('/users', 'UserController@index')->name('dashboard.users');
+	Route::resource('users', 'UserController');
+
 	Route::get('/roles', 'RoleController@index')->name('dashboard.roles');
 	//posts
 	Route::get('/posts', 'PostsController@index')->name('dashboard.posts');

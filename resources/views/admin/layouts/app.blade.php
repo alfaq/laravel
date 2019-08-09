@@ -86,6 +86,7 @@
                     @include('admin.sidebar.sidebar')
                 </div>
                 <div class="col-8">
+                    @include('partials.flash-message')
                     @yield('content')
                 </div>
             </div>

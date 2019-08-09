@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Log;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -22,6 +23,9 @@ class UserController extends Controller
 		}
 		elseif(!empty($name = $request->query('name'))){
 			$users = User::where('name', 'like', '%'.$name.'%')->orderBy('created_at', 'desc')->paginate(20);
+			if(empty($users->total())) {
+				return redirect( '/dashboard/users' )->with( 'warning', 'Empty result!' );
+			}
 		}
 		else {
 			$users = User::orderBy( 'created_at', 'desc' )->paginate( 20 );
@@ -63,7 +67,7 @@ class UserController extends Controller
 
 		//dd(request()->all());
 
-		return redirect('/dashboard/users/');
+		return redirect('/dashboard/users/')->with('success','User created successfully!');
 	}
 
 	/**
@@ -94,7 +98,7 @@ class UserController extends Controller
 
 		$user->update($data);
 
-		return redirect('/dashboard/users/');
+		return redirect('/dashboard/users/')->with('success','User updated successfully!');
 	}
 
 	/**
@@ -106,6 +110,6 @@ class UserController extends Controller
 	public function destroy(User $user)
 	{
 		$user->delete();
-		return redirect('/dashboard/users');
+		return redirect('/dashboard/users')->with('success','User removed successfully!');
 	}
 }

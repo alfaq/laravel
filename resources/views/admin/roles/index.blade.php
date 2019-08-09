@@ -21,7 +21,7 @@
                     @foreach($roles as $role)
                     <tr>
                         <th scope="row">{{$role->id}}</th>
-                        <td>{{$role->title}}</td>
+                        <td><a title="Select all users for this role" href="/dashboard/users?role_id={{$role->id}}">{{$role->title}}</a></td>
                         <td>{{$role->created_at}}</td>
                         <td><a href="/dashboard/role/{{$role->id}}/edit">Edit</a></td>
                         <td><a href="/dashboard/profile/{{$role->id}}">Delete</a></td>

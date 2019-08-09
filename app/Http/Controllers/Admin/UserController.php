@@ -15,9 +15,18 @@ class UserController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$users = User::orderBy('id', 'desc')->paginate(10);
+		if(!empty($role_id = $request->query('role_id'))){
+			$users = User::where('role_id', $role_id)->orderBy('created_at', 'desc')->paginate(20);
+		}
+		elseif(!empty($name = $request->query('name'))){
+			$users = User::where('name', 'like', '%'.$name.'%')->orderBy('created_at', 'desc')->paginate(20);
+		}
+		else {
+			$users = User::orderBy( 'created_at', 'desc' )->paginate( 20 );
+		}
+
 		return view('admin.users.index', compact('users'));
 	}
 
@@ -96,6 +105,7 @@ class UserController extends Controller
 	 */
 	public function destroy(User $user)
 	{
-		dd('destroy');
+		$user->delete();
+		return redirect('/dashboard/users');
 	}
 }
